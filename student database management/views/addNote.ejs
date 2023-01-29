@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Note</title>
+    <link rel="stylesheet" type="text/css" href="../../../../styles.css">
+</head>
+<body>
+<div class="path">
+    <a href="/profile">profile</a> /
+    <a href="/courses/<%= courseID %>/notes">notes</a>
+</div>
+<h1>Add Note for student whose id = <%= studentID %></h1>
+<form action="/courses/<%= courseID %>/notes/add" method="post">
+    <label>Title:</label>
+    <input type="text" name="title"><br>
+    <label>Content:</label>
+    <textarea name="content"></textarea><br>
+    <input type="submit" value="Add">
+</form>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<div class="path">
+    <a href="/profile">profile</a>
+</div>
+<h2>My Courses</h2>
+<div id="courses">
+    <% for (let i = 0; i < courses.length; i++) { %>
+        <div class="course-card">
+            <p class="highlight"><%= courses[i].name %></p>
+            <p>Grade: <%= courses[i].grade %></p>
+            <p>Level: <%= courses[i].level %> - Semester: <%= courses[i].semester %></p>
+            <button onclick="location.href='/courses/<%= courses[i].id %>/notes'">View Notes</button>
+            <button onclick="location.href='/courses/<%= courses[i].id %>/edit'">Edit Course</button>
+        </div>
+    <% } %>
+    <button id="add-course-button" onclick="location.href='/courses/add'">Add Course</button>
+</div>
+</body>
+</html>

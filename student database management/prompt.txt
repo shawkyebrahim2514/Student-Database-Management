@@ -1,0 +1,12 @@
+i want to design a student database management website using nodejs and expressjs with ejs engine, at the end generate a code of styles.css file that use UI&UX styles on all pages
+this wensite register students information such as (id, passowrd, first name, last name, birthday, gender, email, phone number, address, collage-year, GPA)
+after the user craete his account, he can add his taken courses to the database, each course has (name, grade)
+in each course, the user can enter notes on, the notes consists of (title and content)
+i want you to give me the code of the design for this website pages
+page to register students, in this page user must add (id, passowrd, first name, last name, birthday, gender, email, phone number, address, collage-year, GPA)
+page for the user profile, it contains two sections, the first section has full student information, the second section contains the course that the user added in a card shape
+in the second section, put and add button to allow the student to add new course, make the new course added immediately to this section
+students can click on any his courses to open a new page called (course notes)
+in the course notes page, it contains the notes the user stored
+in this page, create an add button to add a new note, after click the add button, a popped page appers to add a title for this note and the content of this note and an button to save the note, after note saved, the poped page disapper
+if the student click any note, a popped page appears contain all note information (title and content) in fields of text, if thje user change the text of any of these fields, he can click 'save' button to save the changes to this note

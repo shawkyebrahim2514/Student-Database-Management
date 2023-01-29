@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Course</title>
+    <link rel="stylesheet" type="text/css" href="../../styles.css">
+</head>
+<body>
+<div class="path">
+    <a href="/profile">profile</a> /
+    <a href="/courses">courses</a>
+</div>
+<h1>Add Course</h1>
+<form action="/courses/add" method="post">
+    <label>Name:</label>
+    <input type="text" name="name"><br>
+    <label>Grade:</label>
+    <input type="text" name="grade"><br>
+    <label>Level:</label>
+    <input type="text" name="level"><br>
+    <label>Semester:</label>
+    <input type="text" name="semester"><br>
+    <input type="submit" value="Save">
+</form>
+</body>
+</html>
