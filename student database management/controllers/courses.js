@@ -13,7 +13,7 @@ const getAddingCourse = ('/add', (req, res) => {
     if (!req.session.updatedData)
         return res.redirect('/');
 
-    res.render('addCourse')
+    model.getAddingPage(req, res);
 });
 
 const postAddingCourse = ('/add', (req, res) => {

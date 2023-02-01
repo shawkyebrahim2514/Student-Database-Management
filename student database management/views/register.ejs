@@ -5,35 +5,45 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<h1>Student Registration</h1>
-<form action="/register" method="post">
-    <label>ID:</label>
-    <input type="text" name="id"><br>
-    <label>Password:</label>
-    <input type="password" name="password"><br>
-    <label>First Name:</label>
-    <input type="text" name="firstName"><br>
-    <label>Last Name:</label>
-    <input type="text" name="lastName"><br>
-    <label>Birthday:</label>
-    <input type="date" name="birthday"><br>
-    <label>Gender:</label>
-    <input type="radio" name="gender" value="male">Male
-    <input type="radio" name="gender" value="female">Female<br><br><br>
-    <label>Email:</label>
-    <input type="email" name="email"><br>
-    <label>Phone Number:</label>
-    <input type="text" name="phoneNumber"><br>
-    <label>Address:</label>
-    <input type="text" name="address"><br>
-    <label>Level:</label>
-    <input type="text" name="level"><br>
-    <label>GPA:</label>
-    <input type="text" name="gpa"><br>
-    <input type="submit" value="Register">
-    <div>
-        <a href="/login">already have an account? (login)</a>
-    </div>
-</form>
+<div class="container">
+    <h1>Student Registration</h1>
+    <% if (warningMessage) { %>
+        <p class='warning-message'>
+            <% var warnings = warningMessage.split("\n");
+            for (var i = 0; i < warnings.length; i++) { if (!warnings[i].length) continue %>
+            <%= warnings[i] %> <br>
+            <% } %>
+        </p>
+    <% } %>
+    <form action="/register" method="post">
+        <label>ID:</label>
+        <input type="text" name="id"><br>
+        <label>Password:</label>
+        <input type="password" name="password"><br>
+        <label>First Name:</label>
+        <input type="text" name="firstName"><br>
+        <label>Last Name:</label>
+        <input type="text" name="lastName"><br>
+        <label>Birthday:</label>
+        <input type="date" name="birthday"><br>
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="male">Male
+        <input type="radio" name="gender" value="female">Female<br><br><br>
+        <label>Email:</label>
+        <input type="email" name="email"><br>
+        <label>Phone Number:</label>
+        <input type="text" name="phoneNumber"><br>
+        <label>Address:</label>
+        <input type="text" name="address"><br>
+        <label>Level:</label>
+        <input type="text" name="level"><br>
+        <label>GPA:</label>
+        <input type="text" name="gpa"><br>
+        <input type="submit" value="Register">
+        <div>
+            <a href="/login">already have an account? (login)</a>
+        </div>
+    </form>
+</div>
 </body>
 </html>

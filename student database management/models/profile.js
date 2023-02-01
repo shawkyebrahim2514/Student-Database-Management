@@ -1,4 +1,5 @@
 const mysql = require("mysql2");
+const handlingErrors = require("../public/javascript/handlingErrors");
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -63,9 +64,11 @@ const editStudentInfo = (req, res) => {
     connection.query(sql, (err, results) => {
         if (err) throw err;
         let {studentID, password, firstName, lastName, email, phoneNumber, address, level, gpa} = results[0]
+        let warningMessage = req.session.warningMessage
+        req.session.warningMessage = ''
         res.render('editProfile.ejs', {
             studentID, password, firstName, lastName, email,
-            phoneNumber, address, level, gpa
+            phoneNumber, address, level, gpa, warningMessage
         })
     });
 }
@@ -83,27 +86,35 @@ const saveStudentInfo = (req, res) => {
         level: req.body.level,
         gpa: req.body.gpa
     };
-    // store these data in the corresponding tables
-    let studentSQL = `update students
-                      set password = '${data.password}'
-                      where id = ${data.studentID}`;
-    executeQuery(studentSQL)
-    let personalSQL = `update personalData
-                       set firstName = '${data.firstName}',
-                           lastName  = '${data.laseName}'
-                       where studentID = ${data.studentID}`;
-    executeQuery(personalSQL)
-    let contactSQL = `update contactData
-                      set email       = '${data.email}',
-                          phoneNumber = '${data.phoneNumber}',
-                          address     = '${data.address}'
-                      where studentID = ${data.studentID}`;
-    executeQuery(contactSQL)
-    let academicSQL = `update academicData
-                       set level = '${data.level}',
-                           gpa   = '${data.gpa}'
-                       where studentID = ${data.studentID}`;
-    executeQuery(academicSQL)
+
+    let warningMessage = handlingErrors.validateEditingProfile(data.studentID, data.password, data.firstName, data.laseName,
+        data.email, data.phoneNumber, data.address, data.level, data.gpa)
+    if (warningMessage) {
+        req.session.warningMessage = warningMessage
+        return res.redirect("/profile/edit")
+    } else {
+        // store these data in the corresponding tables
+        let studentSQL = `update students
+                          set password = '${data.password}'
+                          where id = ${data.studentID}`;
+        executeQuery(studentSQL)
+        let personalSQL = `update personalData
+                           set firstName = '${data.firstName}',
+                               lastName  = '${data.laseName}'
+                           where studentID = ${data.studentID}`;
+        executeQuery(personalSQL)
+        let contactSQL = `update contactData
+                          set email       = '${data.email}',
+                              phoneNumber = '${data.phoneNumber}',
+                              address     = '${data.address}'
+                          where studentID = ${data.studentID}`;
+        executeQuery(contactSQL)
+        let academicSQL = `update academicData
+                           set level = '${data.level}',
+                               gpa   = '${data.gpa}'
+                           where studentID = ${data.studentID}`;
+        executeQuery(academicSQL)
+    }
 }
 
 const deleteStudent = (req, res) => {

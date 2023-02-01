@@ -4,8 +4,11 @@ const get = ('/', (req, res) => {
     // if already the user log in
     if (req.session.updatedData)
         return res.redirect('/profile');
-    else
-        res.render('login');
+    else {
+        let warningMessage = req.session.warningMessage;
+        req.session.warningMessage = '';
+        res.render('login', {warningMessage});
+    }
 });
 
 const post = ('/', (req, res) => {

@@ -6,7 +6,15 @@
 </head>
 <body>
 <div class="container">
-    <h2>Student Login</h2>
+    <h1>Student Login</h1>
+    <% if (warningMessage) { %>
+        <p class='warning-message'>
+            <% var warnings = warningMessage.split("\n");
+            for (var i = 0; i < warnings.length; i++) { if (!warnings[i].length) continue %>
+            <%= warnings[i] %> <br>
+            <% } %>
+        </p>
+    <% } %>
     <form action="/login" method="post">
         <label>Student ID:</label>
         <input type="text" name="id"><br>

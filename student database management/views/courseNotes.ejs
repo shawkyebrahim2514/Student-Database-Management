@@ -2,24 +2,32 @@
 <html>
 <head>
     <title>Course Notes</title>
-    <link rel="stylesheet" type="text/css" href="../../styles.css">
+    <link rel="stylesheet" type="text/css" href="../../../../styles.css">
 </head>
 <body>
 <div class="path">
     <a href="/profile">profile</a> /
     <a href="/courses">courses</a>
 </div>
-<h1>Notes for <span class="highlight"><%= courseName %></span></h1>
+<h1>Notes for <span class="highlight"><%= courseName %> (<%= courseCode %>)</span></h1>
+
+<form action="/courses/<%= studentCourseID %>/notes/search/" method="post" class="search-bar">
+    <input type="text" placeholder="Search..." name="searchWord" value="<%= searchBarValue %>">
+    <div class="searchButton">
+        <button type="submit">Search</button>
+    </div>
+</form>
+<hr class="separator">
 <div id="notes">
     <% for (let i = 0; i < notes.length; i++) { %>
         <div class="note-card">
             <p class="highlight"><%= notes[i].title %></p>
             <p><%= notes[i].content %></p>
-            <button onclick="location.href='/courses/<%= courseID %>/notes/<%= notes[i].id %>/edit'">Edit Note
+            <button onclick="location.href='/courses/<%= studentCourseID %>/notes/<%= notes[i].id %>/edit'">View Note
             </button>
         </div>
     <% } %>
-    <button id="add-note-button" onclick="location.href='/courses/<%= courseID %>/notes/add'">Add Note</button>
+    <button id="add-note-button" onclick="location.href='/courses/<%= studentCourseID %>/notes/add'">Add Note</button>
 </div>
 </body>
 </html>

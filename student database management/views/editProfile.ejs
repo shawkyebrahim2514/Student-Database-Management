@@ -9,6 +9,14 @@
     <a href="/profile">profile</a>
 </div>
 <h1>Edit My Profile</h1>
+<% if (warningMessage) { %>
+    <p class='warning-message'>
+        <% var warnings = warningMessage.split("\n");
+        for (var i = 0; i < warnings.length; i++) { if (!warnings[i].length) continue %>
+        <%= warnings[i] %> <br>
+        <% } %>
+    </p>
+<% } %>
 <form action="/profile/edit" method="post">
     <label>Password:</label>
     <input type="password" name="password" value="<%= password %>"><br>

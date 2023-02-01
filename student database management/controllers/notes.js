@@ -6,7 +6,7 @@ const getNotes = ('/', (req, res) => {
         res.redirect('/');
         return;
     }
-    model.showNotes(req, res)
+    model.getNotes(req, res)
 });
 
 const getAddingNote = ('/add', (req, res) => {
@@ -44,4 +44,13 @@ const deleteNote = ('/:courseID/notes/:noteID/delete', (req, res) => {
     model.deleteNote(req, res)
 });
 
-module.exports = {getNotes, getAddingNote, postAddingNote, getEditingNote, postEditingNote, deleteNote}
+const searchWord = ('/:courseID/notes/search', (req, res) => {
+    // prevent any user to access this page if he doesn't log in until now
+    if (!req.session.updatedData) {
+        res.redirect('/');
+        return;
+    }
+    model.searchWord(req, res)
+});
+
+module.exports = {getNotes, getAddingNote, postAddingNote, getEditingNote, postEditingNote, deleteNote, searchWord}

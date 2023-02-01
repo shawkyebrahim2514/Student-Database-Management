@@ -8,17 +8,17 @@
 <div class="path">
     <a href="/profile">profile</a> /
     <a href="/courses">courses</a> /
-    <a href="/courses/<%= courseID %>/notes">notes</a>
+    <a href="/courses/<%= studentCourseID %>/notes">notes</a>
 </div>
 <h1>Edit Note</h1>
-<form action="/courses/<%= courseID %>/notes/<%= noteID %>/edit" method="post">
+<form action="/courses/<%= studentCourseID %>/notes/<%= noteID %>/edit" method="post">
     <label>Title:</label>
     <input type="text" name="title" value="<%= title %>"><br>
     <label>Content:</label>
     <textarea name="content"><%= content %></textarea><br>
     <div class="edit-or-delete">
         <input type="submit" value="Save">
-        <a href='/courses/<%= courseID %>/notes/<%= noteID %>/delete' class="warning">
+        <a href='/courses/<%= studentCourseID %>/notes/<%= noteID %>/delete' class="warning">
             Delete Note</a>
     </div>
 </form>

@@ -32,5 +32,7 @@ router.post('/:id/notes/add', notesController.postAddingNote);
 
 router.post('/:courseID/notes/:noteID/edit', notesController.postEditingNote);
 
+router.post('/:id/notes/search', notesController.searchWord);
+
 
 module.exports = router;

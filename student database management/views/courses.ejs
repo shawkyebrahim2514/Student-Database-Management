@@ -12,7 +12,7 @@
 <div id="courses">
     <% for (let i = 0; i < courses.length; i++) { %>
         <div class="course-card">
-            <p class="highlight"><%= courses[i].name %></p>
+            <p class="highlight"><%= courses[i].name %> (<%= courses[i].code %>)</p>
             <p>Grade: <%= courses[i].grade %></p>
             <p>Level: <%= courses[i].level %> - Semester: <%= courses[i].semester %></p>
             <button onclick="location.href='/courses/<%= courses[i].id %>/notes'">View Notes</button>
