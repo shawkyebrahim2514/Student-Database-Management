@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Student Registration</h1>
+    <% if (warningMessage) { %>
+        <p class='warning-message'>
+            <% var warnings = warningMessage.split("\n");
+            for (var i = 0; i < warnings.length; i++) { if (!warnings[i].length) continue %>
+            <%= warnings[i] %> <br>
+            <% } %>
+        </p>
+    <% } %>
+    <form action="/register" method="post">
+        <label>ID:</label>
+        <input type="text" name="id" placeholder="Enter your ID"><br><br>
+        <label>Password:</label>
+        <input type="password" name="password" placeholder="Enter your password"><br><br>
+        <label>First Name:</label>
+        <input type="text" name="firstName" placeholder="Enter your first name"><br><br>
+        <label>Last Name:</label>
+        <input type="text" name="lastName" placeholder="Enter your last name"><br><br>
+        <label>Birthday:</label>
+        <input type="date" name="birthday"><br><br>
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="male">Male
+        <input type="radio" name="gender" value="female">Female<br><br><br>
+        <label>Email:</label>
+        <input type="email" name="email" placeholder="Enter your email"><br><br>
+        <label>Phone Number:</label>
+        <input type="text" name="phoneNumber" placeholder="Enter your phone number"><br><br>
+        <label>Address:</label>
+        <input type="text" name="address" placeholder="Enter your address"><br>
+        <label>Level:</label>
+        <select name="level">
+            <option value="">select level</option>
+            <% for (i = 1; i <= 4; i++) { %>
+                <option value="<%= i %>"><%= i %></option>
+            <% } %>
+        </select><br><br>
+        <label>GPA:</label>
+        <input type="text" name="gpa" placeholder="Enter your GPA"><br><br>
+        <input type="submit" value="Register">
+        <div>
+            <a href="/login">already have an account? (login)</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

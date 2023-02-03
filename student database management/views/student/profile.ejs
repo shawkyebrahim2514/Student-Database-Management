@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>Welcome, <span class="highlight"><%= user.firstName %> <%= user.lastName %> </span></h1>
+<div id="student-info">
+    <p><span class="highlight">ID:</span> <%= user.studentID %></p>
+    <p><span class="highlight">Email:</span> <%= user.email %></p>
+    <p><span class="highlight">Phone Number:</span> <%= user.phoneNumber %></p>
+    <p><span class="highlight">Address:</span> <%= user.address %></p>
+    <p><span class="highlight">Gender:</span> <%= user.gender %></p>
+    <p><span class="highlight">Level:</span> <%= user.level %></p>
+    <p><span class="highlight">GPA:</span> <%= user.gpa %></p>
+</div>
+<div id="profile-options">
+    <button onclick="location.href='/profile/edit'">Edit Profile</button>
+    <button onclick="location.href='/courses'">My Courses</button>
+    <button onclick="location.href='/logout'" id="logout">log out</button>
+</div>
+</body>
+</html>

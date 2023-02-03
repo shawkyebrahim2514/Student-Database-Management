@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Note</title>
+    <link rel="stylesheet" type="text/css" href="../../../../styles.css">
+</head>
+<body>
+<div class="path">
+    <a href="/profile">profile</a> /
+    <a href="/courses">courses</a> /
+    <a href="/courses/<%= studentCourseID %>/notes">notes</a>
+</div>
+<h1>Add Note for <span class="highlight"><%= courseInfo.courseName %> (<%= courseInfo.courseCode %>)</span></h1>
+<% if (warningMessage) { %>
+    <p class='warning-message'>
+        <% var warnings = warningMessage.split("\n");
+        for (var i = 0; i < warnings.length; i++) { if (!warnings[i].length) continue %>
+        <%= warnings[i] %> <br>
+        <% } %>
+    </p>
+<% } %>
+<form action="/courses/<%= studentCourseID %>/notes/add" method="post">
+    <label>Title:</label>
+    <input type="text" name="title"><br>
+    <label>Content:</label>
+    <textarea name="content"></textarea><br>
+    <input type="submit" value="Add">
+</form>
+</body>
+</html>

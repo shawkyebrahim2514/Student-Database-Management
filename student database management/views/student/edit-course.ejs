@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Course</title>
+    <link rel="stylesheet" type="text/css" href="../../styles.css">
+</head>
+<body>
+<div class="path">
+    <a href="/profile">profile</a> /
+    <a href="/courses">courses</a>
+</div>
+<h1>Edit Course</h1>
+<% if (warningMessage) { %>
+    <p class='warning-message'>
+        <% var warnings = warningMessage.split("\n");
+        for (var i = 0; i < warnings.length; i++) { if (!warnings[i].length) continue %>
+        <%= warnings[i] %> <br>
+        <% } %>
+    </p>
+<% } %>
+<form action="/courses/<%= data.studentCourseID %>/edit" method="post">
+    <label>Course:</label>
+    <input type="text" id="searchInput" placeholder="Type here course name and choose from the list"
+           onkeyup="searchOptions()">
+    <select name="courseSelected" id="courseSelect">
+        <option value="<%= data.courseID %>" selected>S<%= data.courseCode %> - <%= data.courseName %></option>
+        <% for (let i = 0; i < data.allCoursesOptions.length; i++) { %>
+            <option value="<%= data.allCoursesOptions[i].id %>"><%= data.allCoursesOptions[i].code %>
+                - <%= data.allCoursesOptions[i].name %></option>
+        <% } %>
+    </select><br><br>
+    <label>Grade:</label>
+    <select name="grade">
+        <option value="<%= data.courseGrade %>" selected><%= data.courseGrade %></option>
+        <% for (i = 0; i <= 100; i++) { %>
+            <option value="<%= i %>"><%= i %></option>
+        <% } %>
+    </select><br><br>
+    <label>Level:</label>
+    <select name="level">
+        <option value="<%= data.courseLevel %>" selected><%= data.courseLevel %></option>
+        <% for (i = 1; i <= 4; i++) { %>
+            <option value="<%= i %>"><%= i %></option>
+        <% } %>
+    </select><br><br>
+    <label>Semester:</label>
+    <select name="semester">
+        <option value="<%= data.courseSemester %>" selected><%= data.courseSemester %></option>
+        <% for (i = 1; i <= 2; i++) { %>
+            <option value="<%= i %>"><%= i %></option>
+        <% } %>
+    </select><br><br>
+    <div class="edit-or-delete">
+        <input type="submit" value="Save">
+        <a href='/courses/<%= data.studentCourseID %>/delete' class="warning">
+            Delete Course
+        </a>
+    </div>
+</form>
+<script src="../../javascript/addCourse.js"></script>
+</body>
+</html>

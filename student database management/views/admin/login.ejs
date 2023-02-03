@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+</head>
+<body>
+<h1>Admin Login</h1>
+<% if (warningMessage) { %>
+    <p class='warning-message'>
+        <% var warnings = warningMessage.split("\n");
+        for (var i = 0; i < warnings.length; i++) { if (!warnings[i].length) continue %>
+        <%= warnings[i] %> <br>
+        <% } %>
+    </p>
+<% } %>
+<form action="/admin/login" method="post">
+    <label for="id">ID:</label>
+    <input type="text" id="id" name="id"><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+    <input type="submit" value="Login">
+</form>
+</body>
+</html>

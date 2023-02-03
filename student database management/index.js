@@ -1,6 +1,4 @@
 const express = require('express');
-const ejs = require('ejs');
-const mysql = require('mysql2');
 const app = express();
 const bodyParser = require('body-parser');
 
@@ -18,34 +16,37 @@ app.use(session({
     }
 }));
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'shawky',
-    database: 'student_db'
-});
-
 app.get('/', (req, res) => {
-    if (req.session.updatedData)
-        return res.redirect('/profile');
-    res.render('main');
+    if (req.session.user){
+        if (req.session.user === 'admin'){
+            res.redirect('/admin')
+        } else {
+            res.redirect('/profile')
+        }
+    } else {
+        res.render('student/main');
+    }
 });
 
 // register
-const registerRoute = require('./routes/register')
+const registerRoute = require('./routes/student/register')
 app.use('/register', registerRoute)
 
 // login
-const loginRoute = require('./routes/login')
+const loginRoute = require('./routes/student/login')
 app.use('/login', loginRoute)
 
 // profile
-const profileRoute = require('./routes/profile')
+const profileRoute = require('./routes/student/profile')
 app.use('/profile', profileRoute)
 
 // courses
-const coursesRoute = require('./routes/courses')
+const coursesRoute = require('./routes/student/courses')
 app.use('/courses', coursesRoute)
+
+// admin
+const adminsRoute = require('./routes/admin/admin')
+app.use('/admin', adminsRoute)
 
 app.get('/logout', (req, res) => {
     req.session.destroy()

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h1>Welcome, <span class="highlight"><%= user.firstName %> <%= user.lastName %> </span></h1>
+<div id="admin-info">
+    <p><span class="highlight">ID:</span> <%= user.id %></p>
+    <p><span class="highlight">Email:</span> <%= user.email %></p>
+    <p><span class="highlight">Phone Number:</span> <%= user.phoneNumber %></p>
+</div>
+<div id="admin-options">
+    <button onclick="location.href='/admin/add-students'">Add Student</button>
+    <button onclick="location.href='/admin/show-students'">Show Students</button>
+    <button onclick="location.href='/admin/delete-students'">Delete Student</button>
+    <button onclick="location.href='/admin/edit-students'">Edit Student</button>
+    <button onclick="location.href='/logout'" id="logout">log out</button>
+</div>
+</body>
+</html>
