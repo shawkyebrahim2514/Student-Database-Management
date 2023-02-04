@@ -13,7 +13,7 @@ const get = ('/', (req, res) => {
 });
 
 const post = ('/', async (req, res) => {
-    let state = await model.registerStudent(req, res)
+    let state = await model.registerStudent(req)
     if (state) {
         return res.redirect('/login')
     } else {

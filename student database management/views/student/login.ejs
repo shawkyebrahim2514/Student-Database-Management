@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Student Login</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
 <div class="container">
@@ -12,6 +12,14 @@
             <% var warnings = warningMessage.split("\n");
             for (var i = 0; i < warnings.length; i++) { if (!warnings[i].length) continue %>
             <%= warnings[i] %> <br>
+            <% } %>
+        </p>
+    <% } %>
+    <% if (successfulMessage) { %>
+        <p class='successful-message'>
+            <% var successfuls = successfulMessage.split("\n");
+            for (var i = 0; i < successfuls.length; i++) { if (!successfuls[i].length) continue %>
+            <%= successfuls[i] %> <br>
             <% } %>
         </p>
     <% } %>

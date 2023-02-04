@@ -1,5 +1,4 @@
 const mysql = require("mysql2");
-const handlingErrors = require("../../../public/javascript/student/handling-errors");
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -7,7 +6,7 @@ const connection = mysql.createConnection({
     database: 'student_db'
 });
 
-const showCoursesPage = async (req, res) => {
+const showCoursesPage = async (req) => {
     // get all courses options to be using in addCourse or editCourse
     req.session.allCoursesOptions = await getAllCoursesOptions()
     let sql = makeQuery(req)

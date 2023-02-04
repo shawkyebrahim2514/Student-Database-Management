@@ -8,9 +8,9 @@ const connection = mysql.createConnection({
     database: 'student_db'
 });
 
-const loginStudent = async (req, res) => {
+const loginStudent = async (req) => {
     let data = parseBody(req)
-    let warningMessage = handlingErrors.validateLogin(data.studentID, data.password)
+    let warningMessage = handlingErrors.validateLogin(data)
     if (warningMessage) {
         req.session.warningMessage = warningMessage
         return 0;

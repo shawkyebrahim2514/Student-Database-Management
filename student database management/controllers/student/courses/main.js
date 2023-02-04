@@ -5,9 +5,9 @@ const getCourses = ('/', async (req, res) => {
     let isStudentLogin = handleErrors.checkStudentSession(req)
     if (isStudentLogin) {
         if (!req.session.studentCourses || !req.session.studentCourses.length) {
-            await model.showCoursesPage(req, res)
+            await model.showCoursesPage(req)
         }
-        res.render('student/courses', {courses: req.session.studentCourses})
+        res.render('student/courses/main', {courses: req.session.studentCourses})
     } else {
         return res.redirect('/');
     }

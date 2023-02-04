@@ -6,15 +6,11 @@ const connection = mysql.createConnection({
     database: 'student_db'
 });
 
-let data = {}
-if(Object.keys(data).length === 0){
-    console.log("yes")
-}
-
 function parseMessages(req) {
     let warningMessage = req.session.warningMessage
     req.session.warningMessage = ''
-    return {warningMessage}
+    let successfulMessage = req.session.successfulMessage
+    return {warningMessage, successfulMessage}
 }
 
 async function executeQueryForCourseInfo(studentCourseID) {
@@ -34,4 +30,13 @@ function makeQueryForCourseInfo(studentCourseID) {
             where studentCourse.id = ${studentCourseID}`
 }
 
-module.exports = {parseMessages, executeQueryForCourseInfo}
+async function executeSingleQuery(sql) {
+    return new Promise((resolve, reject) => {
+        connection.query(sql, (err, results) => {
+            if (err) throw err;
+            resolve(1)
+        });
+    });
+}
+
+module.exports = {parseMessages, executeQueryForCourseInfo, executeSingleQuery}

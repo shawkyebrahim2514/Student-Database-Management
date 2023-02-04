@@ -1,21 +1,12 @@
 const express = require('express');
-
 const coursesController = require('../../controllers/student/courses/main');
-
-const addCourseController = require('../../controllers/student/courses/add-course')
-
-const editCourseController = require('../../controllers/student/courses/edit-course')
-
-const deleteCourseController = require('../../controllers/student/courses/delete-course')
-
-const notesController = require('../../controllers/student/notes');
-
-const addNoteController = require('../../controllers/student/add-note');
-
-const editNoteController = require('../../controllers/student/edit-note');
-
-const deleteNoteController = require('../../controllers/student/delete-note');
-
+const addCourseController = require('../../controllers/student/courses/add')
+const editCourseController = require('../../controllers/student/courses/edit')
+const deleteCourseController = require('../../controllers/student/courses/delete')
+const notesController = require('../../controllers/student/notes/main');
+const addNoteController = require('../../controllers/student/notes/add');
+const editNoteController = require('../../controllers/student/notes/edit');
+const deleteNoteController = require('../../controllers/student/notes/delete');
 const router = express.Router();
 
 router.get('/', coursesController.getCourses);

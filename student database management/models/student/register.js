@@ -8,20 +8,20 @@ const connection = mysql.createConnection({
     database: 'student_db'
 });
 
-const registerStudent = async (req, res) => {
+const registerStudent = async (req) => {
     let data = parseBody(req)
-    let warningMessage = handlingErrors.validateRegister(data.studentID, data.password, data.firstName, data.laseName,
-        data.birthday, data.gender, data.email, data.phoneNumber, data.address, data.level, data.gpa)
+    let warningMessage = handlingErrors.validateRegister(data)
     if (warningMessage) {
         req.session.warningMessage = warningMessage
         return 0;
     } else {
         let isNewRegistration = await checkNewRegistration(data.studentID);
         if (!isNewRegistration) {
-            req.session.warningMessage = 'This student account doesn\'t make valid or already exists!'
+            req.session.warningMessage = 'This student account doesn\'t make valid or already exists!\n'
             return 0;
         } else {
             insertDataIntoDatabase(data)
+            req.session.successfulMessage = 'Successfully registration, you can login now!\n'
             return 1;
         }
     }
@@ -32,7 +32,7 @@ function parseBody(req) {
         studentID: req.body.id,
         password: req.body.password,
         firstName: req.body.firstName,
-        laseName: req.body.lastName,
+        lastName: req.body.lastName,
         birthday: req.body.birthday,
         gender: req.body.gender,
         email: req.body.email,
@@ -70,7 +70,7 @@ function insertDataIntoDatabase(data) {
                       values (${data.studentID}, '${data.password}')`;
     executeQuery(studentSQL)
     let personalSQL = `INSERT INTO personalData (studentID, firstName, lastName, birthday, gender)
-                       values (${data.studentID}, '${data.firstName}', '${data.laseName}', '${data.birthday}',
+                       values (${data.studentID}, '${data.firstName}', '${data.lastName}', '${data.birthday}',
                                '${data.gender}')`;
     executeQuery(personalSQL)
     let contactSQL = `INSERT INTO contactData (studentID, email, phoneNumber, address)

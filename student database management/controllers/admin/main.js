@@ -6,7 +6,6 @@ const get = ('/', async (req, res) => {
     if (isAdmin) {
         await model.showAdminInfo(req)
         let user = req.session.user
-        req.session.user = {}
         res.render('admin/main', {user})
     } else {
         res.redirect('/admin/login');

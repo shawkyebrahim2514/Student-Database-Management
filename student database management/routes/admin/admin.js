@@ -1,17 +1,10 @@
 const express = require('express');
-
 const adminController = require('../../controllers/admin/main');
-
 const loginController = require('../../controllers/admin/login');
-
-const addStudentsController = require('../../controllers/admin/add-students');
-
-const deleteStudentsController = require('../../controllers/admin/delete-students');
-
-const showStudentsController = require('../../controllers/admin/show-students');
-
-const editStudentsController = require('../../controllers/admin/edit-students');
-
+const addStudentsController = require('../../controllers/admin/students/add');
+const deleteStudentsController = require('../../controllers/admin/students/delete');
+const showStudentsController = require('../../controllers/admin/students/show');
+const editStudentsController = require('../../controllers/admin/students/edit');
 const router = express.Router();
 
 router.get('/', adminController.get);

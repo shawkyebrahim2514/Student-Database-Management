@@ -1,6 +1,5 @@
 const mysql = require("mysql2");
 const handlingErrors = require("../../public/javascript/admin/handling-errors");
-
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -8,7 +7,7 @@ const connection = mysql.createConnection({
     database: 'admin_db'
 });
 
-const loginAdmin = async (req, res) => {
+const loginAdmin = async (req) => {
     let data = parseBody(req)
     // check for errors
     let warningMessage = handlingErrors.validateLogin(data.adminID, data.password)

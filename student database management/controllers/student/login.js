@@ -8,12 +8,15 @@ const get = ('/', (req, res) => {
         return res.redirect('/profile');
     else {
         let messages = utilityFunctions.parseMessages(req)
-        res.render('student/login', {warningMessage: messages.warningMessage});
+        res.render('student/login', {
+            warningMessage: messages.warningMessage,
+            successfulMessage: messages.successfulMessage
+        });
     }
 });
 
 const post = ('/', async (req, res) => {
-    let state = await model.loginStudent(req, res)
+    let state = await model.loginStudent(req)
     if (state) {
         return res.redirect('/profile')
     } else {

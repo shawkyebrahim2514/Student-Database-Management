@@ -1,6 +1,4 @@
 const mysql = require("mysql2");
-const handlingErrors = require("../../public/javascript/admin/handling-errors");
-
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',

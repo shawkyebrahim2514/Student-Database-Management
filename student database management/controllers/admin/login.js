@@ -13,8 +13,7 @@ const get = ('/', (req, res) => {
 });
 
 const post = ('/', async (req, res) => {
-    let state = await model.loginAdmin(req, res)
-    console.log(req.session.warningMessage)
+    let state = await model.loginAdmin(req)
     if (!state) {
         return res.redirect("/admin/login")
     } else {

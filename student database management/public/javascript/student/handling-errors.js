@@ -26,7 +26,6 @@ function checkPassword(password) {
 }
 
 function checkName(name) {
-    console.log(name.length)
     let error = '';
     if (!name.length) {
         error += "You must enter your name!\n";
@@ -146,42 +145,42 @@ function checkContent(content) {
 }
 
 
-function validateLogin(studentID, password) {
+function validateLogin(data) {
     let warningMessage = '';
-    warningMessage += checkStudentID(studentID);
-    warningMessage += checkPassword(password);
+    warningMessage += checkStudentID(data.studentID);
+    warningMessage += checkPassword(data.password);
     return warningMessage
 }
 
-function validateRegister(studentID, password, firstName, lastName, birthday, gender, email, phoneNumber,
-                          address, level, gpa) {
+function validateRegister(data) {
     let warningMessage = '';
-    warningMessage += checkStudentID(studentID);
-    warningMessage += checkPassword(password);
-    warningMessage += checkName(firstName);
-    warningMessage += checkName(lastName);
-    warningMessage += checkBirthday(birthday);
-    warningMessage += checkGender(gender);
-    warningMessage += checkEmail(email);
-    warningMessage += checkPhoneNumber(phoneNumber);
-    warningMessage += checkAddress(address);
-    warningMessage += checkLevel(level);
-    warningMessage += checkGPA(gpa);
+    warningMessage += checkStudentID(data.studentID);
+    warningMessage += checkPassword(data.password);
+    warningMessage += checkName(data.firstName);
+    warningMessage += checkName(data.lastName);
+    warningMessage += checkBirthday(data.birthday);
+    warningMessage += checkGender(data.gender);
+    warningMessage += checkEmail(data.email);
+    warningMessage += checkPhoneNumber(data.phoneNumber);
+    warningMessage += checkAddress(data.address);
+    warningMessage += checkLevel(data.level);
+    warningMessage += checkGPA(data.gpa);
     return warningMessage;
 }
 
-function validateEditingProfile(studentID, password, firstName, lastName, email, phoneNumber, address, level, gpa) {
+function validateEditingProfile(data) {
     let dummy = '0000';
-    return validateRegister(studentID, password, firstName, lastName, dummy, dummy, email, phoneNumber, address,
-        level, gpa);
+    data['birthday'] = dummy
+    data['gender'] = dummy
+    return validateRegister(data);
 }
 
-function validateCourseInfo(courseID, courseGrade, courseLevel, courseSemester) {
+function validateCourseInfo(data) {
     let warningMessage = '';
-    warningMessage += checkCourseID(courseID);
-    warningMessage += checkGrade(courseGrade);
-    warningMessage += checkLevel(courseLevel);
-    warningMessage += checkSemester(courseSemester);
+    warningMessage += checkCourseID(data.courseID);
+    warningMessage += checkGrade(data.courseGrade);
+    warningMessage += checkLevel(data.courseLevel);
+    warningMessage += checkSemester(data.courseSemester);
     return warningMessage;
 }
 
@@ -209,10 +208,10 @@ function makeQueryForCheckStudentHaveCourse(studentCourseID) {
             where id = ${studentCourseID} limit 1`
 }
 
-function validateNoteInfo(title, content) {
+function validateNoteInfo(data) {
     let warningMessage = '';
-    warningMessage += checkTitle(title);
-    warningMessage += checkContent(content);
+    warningMessage += checkTitle(data.title);
+    warningMessage += checkContent(data.content);
     return warningMessage;
 }
 
