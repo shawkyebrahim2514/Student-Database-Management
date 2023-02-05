@@ -1,5 +1,6 @@
 # Student Database Management
-This repository contains a student database management system, where you can store, manage, and retrieve information about students. The system is built using Node.js, Express, and MySQL.
+This repository contains a student database management system, where you can store, manage, and retrieve information about students.
+The system is built using Node.js, Express, and MySQL.
 
 ## Features for admins
 * Store and manage student data
@@ -19,104 +20,10 @@ This repository contains a student database management system, where you can sto
 * CSS
 * MySQL
 
-## Project Structure
-* Models
-  * Admin
-    * Students
-      * add.js
-      * delete.js
-      * edit.js
-      * main.js
-    * login.js
-    * main.js
-  * Student
-    * Courses
-      * add.js
-      * delete.js
-      * edit.js
-      * main.js
-    * Notes
-      * add.js
-      * delete.js
-      * edit.js
-      * main.js
-    * Profile
-      * edit.js
-      * main.js
-    * login.js
-    * register.js
-* Views
-  * Admin
-    * Students
-      * add.js
-      * delete.js
-      * edit.js
-      * main.js
-    * login.js
-    * main.js
-  * Student
-    * Courses
-      * add.js
-      * edit.js
-      * main.js
-    * Notes
-      * add.js
-      * edit.js
-      * main.js
-    * Profile
-      * edit.js
-      * main.js
-    * login.js
-    * register.js
-    * main.js
-* Controllers
-  * Admin
-    * Students
-      * add.js
-      * delete.js
-      * edit.js
-      * main.js
-    * login.js
-    * main.js
-  * Student
-    * Courses
-      * add.js
-      * delete.js
-      * edit.js
-      * main.js
-    * Notes
-      * add.js
-      * delete.js
-      * edit.js
-      * main.js
-    * Profile
-      * edit.js
-      * main.js
-    * login.js
-    * register.js
-* Routes
-  * Admin
-    * admin.js
-  * Student
-    * profile.js
-    * login.js
-    * register
-    * courses.js
-* Public
-  * CSS
-    * styles.css
-  * Javascript
-    * Admin
-      * Students
-        * edit.js
-        * show.js
-      * handling-errors.js
-      * utility-functions.js
-    * Student
-      * Courses
-        * add.js
-      * handling-errors.js
-      * utility-functions.js
+## Project Details
+> You can see <a href="./project details/Student Database Management - Photos.pdf">Project Photos</a> of its pages
+
+> You can see <a href="./project details/project structure.md">Project Structure</a> for this project files
 
 ## Getting Started
 Clone the repository to your local machine.
@@ -137,3 +44,8 @@ Clone the repository to your local machine.
 > You can see <a href="./Database Design/database scheme.sql">Database Scheme</a> for this project
 
 > You can see <a href="./Database Design/database queries.sql">Database Quiries</a> that used in this project
+
+## Generate fake students for test
+> You can use <a href="./Generate Fake Students">Faker.js</a> to generate fake students to test this project
+
+> You can see <a href="./Database Design/view of students.md">Fake Students</a> that used in this project
