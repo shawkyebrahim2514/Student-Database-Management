@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
 
 async function editStudents(req) {
     let data = parseBody(req)
-    let columnType = await isValidTableAndColumn(data.tableName, data.columnName);
+    let columnType = await getTableColumnType(data.tableName, data.columnName);
     if (columnType) {
         await executeQuery(req, data, columnType)
     } else {
@@ -27,7 +27,7 @@ function parseBody(req) {
     }
 }
 
-async function isValidTableAndColumn(tableName, columnName) {
+async function getTableColumnType(tableName, columnName) {
     const sql = `SELECT data_type
                  FROM information_schema.columns
                  WHERE table_schema = 'student_db'

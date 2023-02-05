@@ -65,7 +65,7 @@ function executeQueryForUpdateNote(req) {
 function makeQueryForUpdateNote(req) {
     return `update notes
             set title   = '${req.body.title}',
-                content = "${req.body.content}"
+                content = '${req.body.content}'
             where id = ${req.params.noteID};`
 }
 

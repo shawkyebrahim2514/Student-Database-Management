@@ -34,7 +34,7 @@ async function executeSavingQueries(data) {
     await utilityFunctions.executeSingleQuery(studentSQL)
     let personalSQL = `update personalData
                        set firstName = '${data.firstName}',
-                           lastName  = '${data.laseName}'
+                           lastName  = '${data.lastName}'
                        where studentID = ${data.studentID}`;
     await utilityFunctions.executeSingleQuery(personalSQL)
     let contactSQL = `update contactData

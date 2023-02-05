@@ -51,15 +51,19 @@ async function checkCourseBelongsToStudent(studentId, courseID) {
 }
 
 async function executeQuery(req, data) {
-    let sql = `INSERT INTO studentCourse (studentID, courseID, grade, level, semester)
-               values (${req.session.user.id}, ${data.courseID}, ${data.courseGrade},
-                       ${data.courseLevel}, ${data.courseSemester})`;
+    let sql = makeQuery(req.session.user.id, data)
     return new Promise((resolve, reject) => {
         connection.query(sql, (err, results) => {
             if (err) throw err;
             resolve(1);
         });
     });
+}
+
+function makeQuery(studentID, data) {
+    return `INSERT INTO studentCourse (studentID, courseID, grade, level, semester)
+            values (${studentID}, ${data.courseID}, ${data.courseGrade},
+                    ${data.courseLevel}, ${data.courseSemester})`;
 }
 
 module.exports = {saveNewCourse}

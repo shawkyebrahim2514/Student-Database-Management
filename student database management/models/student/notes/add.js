@@ -50,7 +50,7 @@ async function executeQuery(req) {
 
 function makeQuery(req) {
     return `insert into notes (studentCourseID, title, content)
-            values (${req.params.studentCourseID}, '${req.body.title}', "${req.body.content}")`
+            values (${req.params.studentCourseID}, '${req.body.title}', '${req.body.content}')`
 }
 
 module.exports = {showPage, addNewNote}

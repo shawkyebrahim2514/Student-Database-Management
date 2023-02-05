@@ -8,7 +8,8 @@
 <div class="path">
     <a href="/profile">profile</a> /
     <a href="/courses">courses</a> /
-    <a href="/courses/<%= studentCourseID %>/notes">notes</a>
+    <a href="/courses/<%= studentCourseID %>/notes">notes</a> /
+    <a>add</a>
 </div>
 <h1>Add Note for <span class="highlight"><%= courseInfo.courseName %> (<%= courseInfo.courseCode %>)</span></h1>
 <% if (warningMessage) { %>
@@ -21,7 +22,7 @@
 <% } %>
 <form action="/courses/<%= studentCourseID %>/notes/add" method="post">
     <label>Title:</label>
-    <input type="text" name="title" placeholder="Enter title"><br>
+    <input type="text" name="title" placeholder="Enter title"><br><br>
     <label>Content:</label>
     <textarea name="content" placeholder="Enter content"></textarea><br>
     <input type="submit" value="Add">

@@ -5,7 +5,8 @@
 </head>
 <body>
 <div class="path">
-    <a href="/admin">admin panel</a>
+    <a href="/admin">admin panel</a> /
+    <a>show students</a>
 </div>
 <h1>Show Students</h1>
 <% if (warningMessage) { %>
@@ -25,17 +26,27 @@
     </select>
 
     <div id="studentIDInputs" style="display:block">
-        <input type="text" name="studentIDFrom" placeholder="Enter student ID range start">
-        <input type="text" name="studentIDTo" placeholder="Enter student ID range end">
+        <label style="alignment: left">From: </label>
+        <input type="text" name="studentIDFrom" placeholder="Enter the beginning of the students' IDs">
+        <label>To: </label>
+        <input type="text" name="studentIDTo" placeholder="Enter the end of the students' IDs">
     </div>
 
     <div id="gpaInputs" style="display:none">
-        <input type="text" name="gpaFrom" placeholder="Enter GPA range start">
-        <input type="text" name="gpaTo" placeholder="Enter GPA range end">
+        <label>From: </label>
+        <input type="text" name="gpaFrom" placeholder="Enter the beginning of GPAs">
+        <label>To: </label>
+        <input type="text" name="gpaTo" placeholder="Enter the end of GPAs">
     </div>
 
     <div id="levelInputs" style="display:none">
-        <input type="text" name="level" placeholder="Enter level">
+        <label>Level: </label>
+        <select name="level">
+            <option value="">select level</option>
+            <% for (i = 1; i <= 4; i++) { %>
+                <option value="<%= i %>"><%= i %></option>
+            <% } %>
+        </select><br><br>
     </div>
     <div class="searchButton">
         <button type="submit">Search</button>
@@ -54,7 +65,7 @@
         <% } %>
     <% } %>
 </div>
-<script src="../../javascript/admin/show-students.js"></script>
+<script src="../../javascript/admin/students/show.js"></script>
 </body>
 </html>
 

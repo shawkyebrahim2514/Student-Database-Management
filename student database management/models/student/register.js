@@ -1,5 +1,6 @@
 const mysql = require("mysql2");
 const handlingErrors = require("../../public/javascript/student/handling-errors");
+const utilityFunctions = require("../../public/javascript/student/utility-functions");
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -43,12 +44,6 @@ function parseBody(req) {
     }
 }
 
-function executeQuery(sql) {
-    connection.query(sql, (err, results) => {
-        if (err) throw err;
-    });
-}
-
 async function checkNewRegistration(studentID) {
     let sql = `select *
                from unregisteredStudents
@@ -68,21 +63,21 @@ async function checkNewRegistration(studentID) {
 function insertDataIntoDatabase(data) {
     let studentSQL = `INSERT INTO students (id, password)
                       values (${data.studentID}, '${data.password}')`;
-    executeQuery(studentSQL)
+    utilityFunctions.executeSingleQuery(studentSQL)
     let personalSQL = `INSERT INTO personalData (studentID, firstName, lastName, birthday, gender)
                        values (${data.studentID}, '${data.firstName}', '${data.lastName}', '${data.birthday}',
                                '${data.gender}')`;
-    executeQuery(personalSQL)
+    utilityFunctions.executeSingleQuery(personalSQL)
     let contactSQL = `INSERT INTO contactData (studentID, email, phoneNumber, address)
                       values (${data.studentID}, '${data.email}', '${data.phoneNumber}', '${data.address}')`;
-    executeQuery(contactSQL)
+    utilityFunctions.executeSingleQuery(contactSQL)
     let academicSQL = `INSERT INTO academicData (studentID, level, GPA)
                        values (${data.studentID}, ${data.level}, ${data.gpa})`;
-    executeQuery(academicSQL)
+    utilityFunctions.executeSingleQuery(academicSQL)
     let deleteUnregisteredStudentSQl = `delete
                                         from unregisteredStudents
                                         where id = ${data.studentID}`
-    executeQuery(deleteUnregisteredStudentSQl)
+    utilityFunctions.executeSingleQuery(deleteUnregisteredStudentSQl)
 }
 
 module.exports = {registerStudent}

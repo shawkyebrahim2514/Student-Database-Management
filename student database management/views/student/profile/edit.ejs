@@ -6,7 +6,8 @@
 </head>
 <body>
 <div class="path">
-    <a href="/profile">profile</a>
+    <a href="/profile">profile</a> /
+    <a>edit</a>
 </div>
 <h1>Edit My Profile</h1>
 <% if (warningMessage) { %>
@@ -39,10 +40,7 @@
     </select><br><br>
     <label>GPA:</label>
     <input type="text" name="gpa" value="<%= user.gpa %>" placeholder="Enter your GPA"><br><br>
-    <div class="edit-or-delete">
-        <input type="submit" value="Save">
-        <a href='/profile/delete' class="warning">Delete Note</a>
-    </div>
+    <input type="submit" value="Save">
 </form>
 </body>
 </html>

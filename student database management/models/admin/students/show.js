@@ -32,6 +32,19 @@ async function showByID(req) {
     }
 }
 
+async function showByLevel(req) {
+    let level = req.body.level
+    let isValidLevel = handlingErrors.validateShowByLevel(level);
+    if (isValidLevel) {
+        const whereStatement = `where academicData.level = ${level}`
+        const sql = makeQuery(whereStatement)
+        await showStudentCards(req, sql)
+    } else {
+        req.session.warningMessage = 'The level is invalid!'
+        return 0;
+    }
+}
+
 async function showByGPA(req) {
     let startGPA = req.body.gpaFrom
     let endGPA = req.body.gpaTo
@@ -42,19 +55,6 @@ async function showByGPA(req) {
         await showStudentCards(req, sql)
     } else {
         req.session.warningMessage = 'The range of GPAs is invalid!'
-        return 0;
-    }
-}
-
-async function showByLevel(req) {
-    let level = req.body.level
-    let isValidLevel = handlingErrors.validateShowByLevel(level);
-    if (isValidLevel) {
-        const whereStatement = `where academicData.level = ${level}`
-        const sql = makeQuery(whereStatement)
-        await showStudentCards(req, sql)
-    } else {
-        req.session.warningMessage = 'The level is invalid!'
         return 0;
     }
 }

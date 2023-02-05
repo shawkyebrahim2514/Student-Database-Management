@@ -10,6 +10,7 @@ function parseMessages(req) {
     let warningMessage = req.session.warningMessage
     req.session.warningMessage = ''
     let successfulMessage = req.session.successfulMessage
+    req.session.successfulMessage = ''
     return {warningMessage, successfulMessage}
 }
 
