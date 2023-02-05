@@ -14,8 +14,9 @@ The system is built using NodeJS, ExpressJS, ejs engine, css, and MySQL.
 * Can store notes in their courses
 
 ## Prerequisites
-* Node.js
-* Express
+* NodeJS
+* ExpressJS
+* ejs engine
 * HTML
 * CSS
 * MySQL
