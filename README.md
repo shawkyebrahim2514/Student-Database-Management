@@ -1,6 +1,6 @@
 # Student Database Management
 This repository contains a student database management system, where you can store, manage, and retrieve information about students.
-The system is built using Node.js, Express, and MySQL.
+The system is built using NodeJS, ExpressJS, ejs engine, css, and MySQL.
 
 ## Features for admins
 * Store and manage student data
