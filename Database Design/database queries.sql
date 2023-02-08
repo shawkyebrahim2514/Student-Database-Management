@@ -261,3 +261,14 @@ where studentID between ${data.startID} and ${data.endID};
 update ${data.tableName}
 set ${data.columnName} = '${data.updateValue}'
 where studentID between ${data.startID} and ${data.endID};
+
+
+-- Delete students
+delete
+from students
+where id between ${startID} and ${endID};
+
+
+-- Add new students
+INSERT INTO unregisteredStudents (id)
+VALUES ?;
